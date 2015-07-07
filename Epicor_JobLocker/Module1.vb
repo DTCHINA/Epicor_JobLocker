@@ -9,6 +9,8 @@
         Console.WriteLine("Days out Before     = " & Days_Out)
         CalcBusinessDays(Days_Out, Days_Out)
         Console.WriteLine("Days out After      = " & Days_Out)
+        Console.ReadKey()
+
         CalcHolidays(Days_Out, Days_Out)
         Console.WriteLine("Days out Holiday    = " & Days_Out)
 
@@ -22,13 +24,14 @@
         Dim WorkingDate As Date = Today
         BizzSpan = D1
 
-        Do Until D1 = c
+        Do Until D1 = C
 
-            If Weekday(WorkingDate) = 1 Then BizzSpan = BizzSpan + 1 ' Sunday Start
-            If Weekday(WorkingDate) = 7 Then BizzSpan = BizzSpan + 1 ' Saturday Start
             WorkingDate = WorkingDate.AddDays(1)
             C = C + 1
-            Console.WriteLine (WorkingDate)
+
+            If Weekday(WorkingDate) = 7 Or Weekday(WorkingDate) = 1 Then BizzSpan = BizzSpan + 1
+            Console.WriteLine("Date today = " & WorkingDate & " " & Weekday(WorkingDate) & " Biz Days " & BizzSpan)
+
         Loop
 
 
@@ -42,10 +45,13 @@
 
         Do Until D1 = C
 
-            If WorkingDate = "7/4/2015" Then BizzSpan = BizzSpan + 1
             WorkingDate = WorkingDate.AddDays(1)
             C = C + 1
-            Console.WriteLine(WorkingDate)
+
+            If WorkingDate = "7/11/2015" Then BizzSpan = BizzSpan + 1
+            If WorkingDate = "7/12/2015" Then BizzSpan = BizzSpan + 1
+            Console.WriteLine("Date today = " & WorkingDate & " " & Weekday(WorkingDate) & " Biz Days " & BizzSpan)
+
         Loop
 
 
